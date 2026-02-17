@@ -31,13 +31,13 @@
     },
     "require": {
         "php": "^8.2|^8.3|^8.4",
-        "google/cloud-translate": "^1.2",
+        "google/cloud-translate": "^1.21",
         "illuminate/support": "^12.51.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "9.1.2",
-        "phpunit/phpunit": "^10.3"
+        "orchestra/testbench": "^10.0",
+        "phpunit/phpunit": "^11.0"
     },
     "extra": {
         "laravel": {

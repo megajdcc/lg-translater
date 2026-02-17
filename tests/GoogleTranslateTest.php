@@ -7,6 +7,7 @@ use Megajdcc\GoogleTranslate\GoogleTranslate;
 use Megajdcc\GoogleTranslate\GoogleTranslateClient;
 use Mockery;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class GoogleTranslateTest extends BaseTestCase
 {
@@ -24,7 +25,7 @@ class GoogleTranslateTest extends BaseTestCase
     }
 
 
-    /** @test */
+    #[Test]
     public function it_can_detect_the_language_of_string_passed_to_it()
     {
        $this->cargar();
@@ -42,7 +43,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('confidence', $response);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_detect_the_language_of_an_array_of_strings_passed_to_it()
     {
         $this->cargar();
@@ -68,7 +69,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('confidence', $response[1]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_translate_the_string_passed_to_it()
     {
         $this->cargar();
@@ -88,7 +89,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('translated_language_code', $response);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_translate_the_html_string_passed_to_it()
     {
         $this->cargar();
@@ -108,7 +109,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('translated_language_code', $response);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_translate_an_array_of_strings_passed_to_it()
     {
         $this->cargar();
@@ -135,7 +136,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('translated_language_code', $response[1]);
     }
 
-    /** @test */
+    #[Test]
     public function test_the_just_translate_method_returns_just_the_translated_string()
     {
         $this->cargar();
@@ -150,7 +151,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertEquals('A test string', $response);
     }
 
-    /** @test */
+    #[Test]
     public function test_the_unless_language_is_method_does_not_translate_the_language_of_given_text_if_it_is_same_as_defined_in_that_method()
     {
         $this->cargar();
@@ -165,7 +166,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertEquals($this->testString, $response);
     }
 
-    /** @test */
+    #[Test]
     public function test_the_unless_language_is_method_translates_the_language_of_given_text_only_if_it_is_same_as_defined_in_that_method()
     {
         $this->cargar();
@@ -190,7 +191,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->assertArrayHasKey('translated_language_code', $response);
     }
 
-    /** @test */
+    #[Test]
     public function it_sanitizes_the_language_codes()
     {
         $this->cargar();
@@ -215,7 +216,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->translate->sanitizeLanguageCode('xx');
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_input_against_null_strings()
     {
         $this->cargar();
@@ -225,7 +226,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->translate->justTranslate(null, 'en');
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_input_against_null_strings_in_a_batch()
     {
         $this->cargar();
@@ -234,7 +235,7 @@ class GoogleTranslateTest extends BaseTestCase
         $this->translate->translateBatch([null, null], 'en', 'hi');
     }
 
-    /** @test */
+    #[Test]
     public function it_validates_input_agaisnt_null_strings_when_detecting_a_language()
     {
         $this->cargar();
